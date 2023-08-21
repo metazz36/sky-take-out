@@ -27,10 +27,8 @@ public class AliOssUtil {
      * @return
      */
     public String upload(byte[] bytes, String objectName) {
-
         // 创建OSSClient实例。
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-
         try {
             // 创建PutObject请求。
             ossClient.putObject(bucketName, objectName, new ByteArrayInputStream(bytes));
@@ -51,7 +49,6 @@ public class AliOssUtil {
                 ossClient.shutdown();
             }
         }
-
         //文件访问路径规则 https://BucketName.Endpoint/ObjectName
         StringBuilder stringBuilder = new StringBuilder("https://");
         stringBuilder
@@ -60,9 +57,7 @@ public class AliOssUtil {
                 .append(endpoint)
                 .append("/")
                 .append(objectName);
-
         log.info("文件上传到:{}", stringBuilder.toString());
-
         return stringBuilder.toString();
     }
 }
