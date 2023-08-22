@@ -11,3 +11,6 @@ sky:
     access-key-id: LTAI5tDpF6UsU48xaT2JruWe
     access-key-secret: 0EDWxo4fMvIEg3y8RfzV7NvNj6UeQL
     bucket-name: sky-metazz
+  redis:
+    host: localhost
+    port: 6379
