@@ -1,5 +1,6 @@
 package com.sky.config;
 
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,11 @@ public class RedisConfiguration {
         RedisTemplate redisTemplate = new RedisTemplate();
         //设置redis的连接工厂对象
         redisTemplate.setConnectionFactory(redisConnectionFactory);
+        FastJsonRedisSerializer serializer = new FastJsonRedisSerializer(Object.class);
         //设置redis key的序列化器
         redisTemplate.setKeySerializer(new StringRedisSerializer());
+        //设置redis value的序列化器
+        redisTemplate.setValueSerializer(serializer);
         return redisTemplate;
     }
 
